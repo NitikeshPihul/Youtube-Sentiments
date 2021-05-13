@@ -6,7 +6,7 @@ import sys
 
 YOUTUBE_IN_LINK = 'https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&maxResults=100&order=relevance&pageToken={pageToken}&videoId={videoId}&key={key}'
 YOUTUBE_LINK = 'https://www.googleapis.com/youtube/v3/commentThreads?part=snippet&maxResults=100&order=relevance&videoId={videoId}&key={key}'
-key = 'AIzaSyDdEvwN2N5lzsNCmBqTJ01jvUSt9qoCkx8'
+key = 'key'
 	
 def commentExtract(videoId, count):
 	#print ("Comments downloading")
