@@ -1,0 +1,56 @@
+{% extends 'orgbody.html' %}
+{% block head %}
+<script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript">
+      google.charts.load("current", {packages:["corechart"]});
+      google.charts.setOnLoadCallback(drawChart);
+      function drawChart() {
+        var data = google.visualization.arrayToDataTable([
+          {% for key,value in lis[2].items() %}
+              {% if value is string %}
+                  ['{{ key }}','{{value}}'],
+              {% else %}
+                  ['{{ key }}',{{value}}],
+              {% endif %}
+          {% endfor %}
+          /*['Task', 'Hours per Day'],
+          ['Work',     11],
+          ['Eat',      2],
+          ['Commute',  2],
+          ['Watch TV', 2],
+          ['Sleep',    7]*/
+        ]);
+
+        var options = {
+          title: 'Comment Sentiments Analysis',
+          is3D: true,
+        };
+
+        var chart = new google.visualization.PieChart(document.getElementById('piechart_3d'));
+        chart.draw(data, options);
+      }
+    </script>
+    
+    {% endblock head %}
+
+{% block title %} Youtube Comment Analyser{% endblock title %}
+{% block body %}
+    <div>
+        <div class="container my-5">
+            <h1 class="title">Youtube Video Analysis</h1>
+          </div>
+        <div class="per">
+        <h5>Positive Comments Percentage</h5>
+         <span class="badge bg-light text-dark bg-lg">{{ lis[0] }}</span>
+        </div>
+        <div class="per">
+        <h5>Negative Comments Percentage</h5>  
+        <span class="badge bg-light text-dark bg-lg">{{ lis[1] }}</span>
+        </div>
+        <div class="pie-des">
+          <div style="margin-left: 150px ;width: 1000px">
+            <div id="piechart_3d" style="width: 900px; height: 500px;"></div>
+        </div>
+        </div>
+    </div>
+{% endblock body %}

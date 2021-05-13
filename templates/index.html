@@ -1,0 +1,28 @@
+{% extends 'orgbody.html' %}
+{% block title %} Youtube Comment Analyser{% endblock title %}
+{% block body %}
+
+     <div class="container my-5">
+      <h1 class="title">Youtube Comment Analyser</h1>
+    </div>
+    <div class="container my-5">
+      <form action="{{ url_for('predict')}}" method="POST">
+        <div class="mb-3">
+          <label for="text" class="label">Enter Youtube Video Link</label>
+          <input type="text" class="box"name="text" id="text">
+        </div>
+
+        <div class="mb-3">
+          <label for="text" class="label">Enter number of comment you want to analyse</label>
+          <input type="text" class="box"name="No_comment" id="No_comment">
+        </div>
+
+        <button type="submit" class="btn btn-outline-light btn-lg align-items-center">Submit</button>
+      </form>
+    
+    </div>    
+
+
+   
+{% endblock body %}
+
